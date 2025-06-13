@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="consumirApi()">
+    <script>
+        function consumirApi(){
+            fetch('https://www.datos.gov.co/resource/ha6j-pa2r.json')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+        }
+    </script>
+</body>
+</html>
