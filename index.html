@@ -6,11 +6,33 @@
     <title>Document</title>
 </head>
 <body onload="consumirApi()">
+    	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-3.0.1.min.js'></script>
     <script>
         function consumirApi(){
             fetch('https://www.datos.gov.co/resource/ha6j-pa2r.json')
             .then(res=>res.json())
-            .then(json=>console.log(json))
+            //Creando arreglo para el departamento del Cauca
+            //json tiene los datos del arreglo
+            .then(json=>{
+                var departamentos = ['CAUCA', 'CALDAS'];
+                var cantidad = [];
+                var totalCauca = 0;
+                var totalCaldas = 0;
+                json.forEach(element => {
+                    if (element.departamento=='CAUCA'){
+                        totalCauca = totalCauca + parseInt(element.cantidad);
+                    }
+                    if (element.departamento=='CALDAS'){
+                        totalCaldas = totalCaldas + parseInt(element.cantidad);
+                    }
+
+                });
+                cantidad.push(totalCauca);
+                cantidad.push(totalCaldas);
+                //alert("Total de casos en Cauca es: " + totalCauca)
+            }
+            )
         }
     </script>
 </body>
