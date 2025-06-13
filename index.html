@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body onload="consumirApi()">
+    <div id='myDiv'></div>
     	<!-- Load plotly.js into the DOM -->
 	<script src='https://cdn.plot.ly/plotly-3.0.1.min.js'></script>
     <script>
@@ -31,6 +32,15 @@
                 cantidad.push(totalCauca);
                 cantidad.push(totalCaldas);
                 //alert("Total de casos en Cauca es: " + totalCauca)
+                var data = [
+                {
+                    x: departamentos,
+                    y: cantidad,
+                    type: 'bar'
+                  }
+                ];
+              
+                Plotly.newPlot('myDiv', data);
             }
             )
         }
